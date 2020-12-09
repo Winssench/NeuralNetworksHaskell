@@ -1,0 +1,16 @@
+L. Thiry, 2020-12-03
+
+Neural networks in Functional Programming (with Haskell).
+
+1) Build the executables with:
+make
+
+2) Build the documention with:
+make doc
+
+3) Understand the various tools proposed (build, learn, remind) with the shell script tutor.sh
+
+4) Read support.pdf for models and their implementation
+
+0) You can clean the project with:
+make clean
