@@ -21,6 +21,18 @@ recall [ws] xs = y0
        y0 = sigmoid v
 recall (ws:wss) xs = recall wss (recall [ws] xs)
 
+softmax :: [Double] -> [Double]
+softmax ys = r
+      where{
+             
+             b = map (\(v) -> exp (v)) ys;
+             a = sum b;
+             --let b' = Prelude.map (\(v) -> ((fromIntegral (v) :: Double)/255.0 ) ) b
+             r = map (\(v) -> v/a) b
+      } 
+            
+      
+
 k = 0.1 -- learning rate
 
 update [ws] xs y = ([ws'],alpha)

@@ -37,6 +37,10 @@ for i in {1..20}
 do
 ./learn ./dat/xor.dat
 done
+for i in {1..20}
+do
+./learn ./dat/ocr.dat
+done
 echo "Now ./remind [1,0] -> $(./remind [1,0])"
 echo ""
 echo "Checking other inputs"
@@ -58,7 +62,7 @@ echo ""
 echo "Please wait ..."
 for i in {1..20}
 do
-./learn ./dat/autoencoder.dat
+./learn ./dat/ocr.dat
 done
 echo ""
 echo "Results:"

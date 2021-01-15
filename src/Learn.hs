@@ -1,4 +1,4 @@
 import Tools
 
-main = learn
+main = learnFinal
 

@@ -1,4 +1,4 @@
 import Tools
 
-main = remind
+main = remindImage
 
