@@ -7,8 +7,8 @@ or get the output of a network (see recall).
 module Neural (Input,Output,Dataset,recall,train) where
 
 import Prelude hiding ((<*>),init)
-import System.Environment
-import System.IO
+
+
 import Random
 
 type Input  = [Double]
@@ -17,26 +17,15 @@ type Dataset= [(Input,Output)]
 
 recall :: Net -> Input -> Output
 recall [ws] xs = y0
- where v  = ws <**> (shift xs)
+ where v  = ws <**> shift xs
        y0 = sigmoid v
 recall (ws:wss) xs = recall wss (recall [ws] xs)
-
-softmax :: [Double] -> [Double]
-softmax ys = r
-      where{
-             
-             b = map (\(v) -> exp (v)) ys;
-             a = sum b;
-             --let b' = Prelude.map (\(v) -> ((fromIntegral (v) :: Double)/255.0 ) ) b
-             r = map (\(v) -> v/a) b
-      } 
-            
-      
+                  
 
 k = 0.1 -- learning rate
 
 update [ws] xs y = ([ws'],alpha)
- where v  = ws <**> (shift xs)
+ where v  = ws <**> shift xs
        y0 = sigmoid v
        de = y0 <-> y
        dy = sigmoid' v
@@ -46,7 +35,7 @@ update [ws] xs y = ([ws'],alpha)
        dx = map tail ws
        alpha = bigsum ((de <*> dy) <|> dx)
 update (ws:wss) zs y = (ws':wss',alpha)
- where u  = ws <**> (shift zs)
+ where u  = ws <**> shift zs
        xs = sigmoid u
        (wss',alph) = update wss xs y
        dx = sigmoid' u
@@ -58,14 +47,15 @@ update (ws:wss) zs y = (ws':wss',alpha)
 
 train :: Int -> Dataset -> Net -> Net
 train n ds ws = train0 n (rep ds) ws
- where rep ds = ds ++ (rep ds)
+ where rep ds = ds ++ rep ds
        train0 0 ds          ws = ws
        train0 n ((xs,y):ds) ws = train0 (n-1) ds ws'
         where (ws',alpha) = update ws xs y
 
 -- OPERATORS
 
-sig  x = 1.0/(1.0+exp (-x))
+--sig  x = 1.0/(1.0+exp (-x))
+sig  x = 1.0/(1.0+exp (-x*0.5))
 sig' x = sx*(1.0-sx)
  where sx = sig x
 
@@ -87,7 +77,7 @@ infixr <**> -- matrix * vector
 xs <**> ys = map (<.> ys) xs
 
 infixr <&> -- constant * vector
-k <&> xs = (repeat k) <*> xs
+k <&> xs = repeat k <*> xs
 
 infixr <|> -- vector * matrix
 k <|> xs = zipWith (<&>) k xs
