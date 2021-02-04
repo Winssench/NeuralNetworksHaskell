@@ -1,25 +1,11 @@
-L. Thiry, 2020-12-03
+
+
+# Neural Networks in Haskell
+
 
 Neural networks in Functional Programming (with Haskell).
 
-1) Build the executables with:
-make
 
-2) Build the documention with:
-make doc
-
-3) Understand the various tools proposed (build, learn, remind) with the shell script tutor.sh
-
-4) Read support.pdf for models and their implementation
-
-0) You can clean the project with:
-make clean
-
-
-
-# Project Title
-
-One Paragraph of project description goes here
 
 ## Getting Started
 
@@ -27,80 +13,137 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+ Here is what we need for this project
+ ```
+ Visual Studio Code
+ ```
 
 ```
-Give examples
+GHC 
 ```
+```
+CABAL
+```
+
+and some Libraries
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
-
+download Visual Studio Code. visit this
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+https://code.visualstudio.com/download
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+to install Haskell plateform, go on the official website, under the Haskell Platform section
+choose your System
 
 ```
-Give an example
+https://www.haskell.org/downloads/
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+once that installed, we have to install the libraries .
+before that :
 ```
-Give an example
+cabal update
 ```
 
-## Deployment
+Here the order counts otherwise you wont compile the project!
+to avoid bugs each library has to be installed with the versions used in this project .
 
-Add additional notes about how to deploy this on a live system
+vector library:
+```
+cabal install --lib vector-0.12.1.2
+```
+
+
+bmp Library:
+```
+cabal install --lib bmp-1.2.6.3
+```
+
+repa library:
+
+```
+cabal install --lib repa-3.4.1.4
+```
+
+strict.io library:
+
+```
+cabal install --lib strict-io-0.2.2
+```
+
+
+
+## Make the project
+Neural networks in Functional Programming (with Haskell).
+
+* Build the executables with: make
+
+* Build the documention with: make doc
+
+* You can clean the project with: make clean
+
+
+## Usage
+
+
+### Note : 3 examples XOR, AUTO_ENCODER and DIGIT_RECOGNITION Result in Binary.
+All these commands to be typed in terminal
+****
+
+* Run the command make first .
+
+
+*   Build a network (e.g. 2 inputs, 2 hidden neurons, 1 output)" depending on the problem:
+
+    - XOR   ->   ./build [2,2,1]
+    - AUTO_ENCODER-> ./build [3,2,3]
+    - DIGIT_RECOGNITION -> ./build [256,2,2]
+
+* Check the ouput of the network with inputs  
+
+    - XOR ->  ./remind [1,0] 
+    - AUTO_ENCODER-> ->  ./remind [0,0,0]
+    - DIGIT_RECOGNITION -> ./remind ./src/img0.bmp
+
+
+* Get an (input->output) dataset for training depending on the   example wanted :
+    - XOR ->   dat/xor.dat
+    - AUTO_ENCODER -> dat/autoencoder.dat
+    - DIGIT_RECOGNITION -> dat/ocr.dat
+
+    which leads us to the learning process:
+    - XOR ->   for i in {1..20};do ./learn ./dat/xor.dat;done
+    - AUTO_ENCODER -> for i in {1..20};do ./learn .dat/autoencoder.dat; done
+    - DIGIT_RECOGNITION -> for i in {1..30}; do ./learn ./dat/ocr.dat; done
+  
+
+* ReCheck the ouput After the network learned. for more information see tutor.sh the tutorial available
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
+* [VSCode](https://code.visualstudio.com) - as IDE
+* [Haskell](https://www.haskell.org) - for everything
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
+* **DR L.Thiry(HDR)** - ENSISA/IRIMAS
+* **Omar CHICHAOUI** - *Software Engineering Student*-ENSISA Mulhouse France
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+
+* Thanks to the professor  **DR L.Thiry(HDR)** and all the [ENSISA](http://www.ensisa.uha.fr/en) staff.
+* Thanks to everyone who works to develop [Haskell](https://www.haskell.org) .
+* Template used  Billie Thompson - 

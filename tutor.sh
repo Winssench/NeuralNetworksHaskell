@@ -37,10 +37,6 @@ for i in {1..20}
 do
 ./learn ./dat/xor.dat
 done
-for i in {1..20}
-do
-./learn ./dat/ocr.dat
-done
 echo "Now ./remind [1,0] -> $(./remind [1,0])"
 echo ""
 echo "Checking other inputs"
