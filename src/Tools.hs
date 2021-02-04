@@ -8,19 +8,10 @@ module Tools (build,remind,learn,readImageFromBMPPrime, learnFinal,remindImage) 
 import Prelude hiding ((<*>),init,writeFile,readFile)
 import System.Environment
 
-import System.IO.Strict -- install library with: cabal install strict-io
-
-
-
+import System.IO.Strict 
 
 import Random
 import Neural
-
-
-
-
-
-
 
 
 ---
@@ -61,8 +52,6 @@ remind = do
  mf <- run (readFile "model.dat")
  let xs = Prelude.read (Prelude.head vs) :: [Double]
  let ws = Prelude.read mf :: [[[Double]]]
- Prelude.putStrLn $ "xs " Prelude.++ show (Prelude.length xs , xs)
- Prelude.putStrLn $ "ws " Prelude.++ show (Prelude.length ws , ws)
  Prelude.print (recall ws xs)
 
 
@@ -127,18 +116,6 @@ readMatrixfromImage image = do
        return c
 
        
-
- 
-
-{-
-learnImage = do 
-          x <- readImageFromBMPa "./img0.bmp"
-          
-          Prelude.putStrLn $ "X " Prelude.++ show x
--}
-       
-     
- 
 
 
 readImageFromBMPa

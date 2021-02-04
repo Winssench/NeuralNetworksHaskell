@@ -97,7 +97,7 @@ All these commands to be typed in terminal
 * Run the command make first .
 
 
-*   Build a network (e.g. 2 inputs, 2 hidden neurons, 1 output)" depending on the problem:
+*   Build a networkdepending on the problem:
 
     - XOR   ->   ./build [2,2,1]
     - AUTO_ENCODER-> ./build [3,2,3]
@@ -105,8 +105,8 @@ All these commands to be typed in terminal
 
 * Check the ouput of the network with inputs  
 
-    - XOR ->  ./remind [1,0] 
-    - AUTO_ENCODER-> ->  ./remind [0,0,0]
+    - XOR ->  ./remindsimple [1,0] 
+    - AUTO_ENCODER-> ->  ./remindsimple [0,0,0]
     - DIGIT_RECOGNITION -> ./remind ./src/img0.bmp
 
 
@@ -116,8 +116,8 @@ All these commands to be typed in terminal
     - DIGIT_RECOGNITION -> dat/ocr.dat
 
     which leads us to the learning process:
-    - XOR ->   for i in {1..20};do ./learn ./dat/xor.dat;done
-    - AUTO_ENCODER -> for i in {1..20};do ./learn .dat/autoencoder.dat; done
+    - XOR ->   for i in {1..20};do ./learnsimple ./dat/xor.dat;done
+    - AUTO_ENCODER -> for i in {1..20};do ./learnsimple .dat/autoencoder.dat; done
     - DIGIT_RECOGNITION -> for i in {1..30}; do ./learn ./dat/ocr.dat; done
   
 
