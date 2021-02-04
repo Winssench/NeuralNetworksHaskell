@@ -62,7 +62,7 @@ echo ""
 echo "Please wait ..."
 for i in {1..20}
 do
-./learn ./dat/ocr.dat
+./learn ./dat/autoencoder.dat
 done
 echo ""
 echo "Results:"
