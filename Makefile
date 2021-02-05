@@ -9,7 +9,7 @@ build:
 	ghc --make CutFirst.hs -o ../cut-first
 
 clean:
-	rm -rf ./src/*.o ./src/*.hi build learn remind cut-last cut-first *.bak *.dat doc/
+	rm -rf ./src/*.o ./src/*.hi build learn remind remindsimple learnsimple cut-last cut-first *.bak *.dat doc/
 
 doc:
 	mkdir doc

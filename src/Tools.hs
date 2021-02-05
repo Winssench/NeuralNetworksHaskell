@@ -79,6 +79,13 @@ learn = do
  let ws'= train n ds ws
  run (writeFile "model.dat" (show ws'))
 
+
+{-| 
+This command is based on the Neural.train function. It requires a 
+"model.dat" first (see "build")
+
+Sample usage: ./train ./dat/ocr.dat
+-}
 learnFinal = do 
        ds <- learnbmpa
        mf <- run (readFile "model.dat")

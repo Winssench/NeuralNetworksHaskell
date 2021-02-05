@@ -97,7 +97,7 @@ All these commands to be typed in terminal
 * Run the command make first .
 
 
-*   Build a networkdepending on the problem:
+*   Build a network depending on the problem:
 
     - XOR   ->   ./build [2,2,1]
     - AUTO_ENCODER-> ./build [3,2,3]
@@ -107,7 +107,7 @@ All these commands to be typed in terminal
 
     - XOR ->  ./remindsimple [1,0] 
     - AUTO_ENCODER-> ->  ./remindsimple [0,0,0]
-    - DIGIT_RECOGNITION -> ./remind ./src/img0.bmp
+    - DIGIT_RECOGNITION -> ./remind ./img0.bmp
 
 
 * Get an (input->output) dataset for training depending on the   example wanted :
